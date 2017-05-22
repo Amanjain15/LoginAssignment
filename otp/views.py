@@ -83,8 +83,8 @@ def verify_otp(request):
 	# if request.method == 'POST':
 		response_json = {}	
 		try:
-			mobile =str(request.POST.get('mobile'))
-			otp =str(request.POST.get('otp'))
+			mobile =str(request.GET.get('mobile'))
+			otp =str(request.GET.get('otp'))
 			access_token = 'Null'
 			print(mobile)
 			print(otp)
@@ -103,7 +103,7 @@ def verify_otp(request):
 					setattr(user_list,'email',email)
 					user_list.save()
 					print('User Details Updated')
-				except:
+				except Exception as e:
 					user_data.objects.create(
 						name=name,
 						email=email,
